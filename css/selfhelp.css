@@ -1,0 +1,52 @@
+.selfhelp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #eef7f3;
+  font-size: 14px;
+}
+
+.tab.active {
+  background: #2fbf8f;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h2 {
+  margin-bottom: 10px;
+}
+
+.tab-content h3 {
+  margin-top: 20px;
+}
+
+.tab-content p,
+.tab-content li {
+  font-size: 14.5px;
+  line-height: 1.7;
+}
