@@ -1,12 +1,15 @@
 const postBox = document.getElementById("postBox");
 const postList = document.getElementById("postList");
 
+const API_BASE = "https://gemini-manomitra.onrender.com";
+
+/* ---------------- TOGGLE POST BOX ---------------- */
 function togglePostBox() {
   postBox.style.display =
     postBox.style.display === "none" ? "block" : "none";
 }
 
-// demo posts
+/* ---------------- DEMO POSTS (fallback only) ---------------- */
 const demoPosts = [
   {
     title: "Feeling anxious before exams",
@@ -22,34 +25,78 @@ const demoPosts = [
   }
 ];
 
-demoPosts.forEach(renderPost);
+/* ---------------- LOAD POSTS FROM BACKEND ---------------- */
+async function loadPosts() {
+  try {
+    const res = await fetch(`${API_BASE}/forum`);
+    const data = await res.json();
 
-function addPost() {
+    postList.innerHTML = "";
+
+    if (Array.isArray(data) && data.length > 0) {
+      data.forEach(renderPost);
+    } else {
+      demoPosts.forEach(renderPost);
+    }
+  } catch (err) {
+    console.error("Forum load failed:", err);
+    demoPosts.forEach(renderPost);
+  }
+}
+
+/* ---------------- ADD NEW POST ---------------- */
+async function addPost() {
   const title = document.getElementById("postTitle").value.trim();
   const content = document.getElementById("postContent").value.trim();
 
   if (!title || !content) return;
 
-  renderPost({
+  const postData = {
     title,
-    content,
-    date: new Date().toDateString()
-  });
+    content
+  };
+
+  try {
+    const res = await fetch(`${API_BASE}/forum`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postData)
+    });
+
+    const savedPost = await res.json();
+
+    renderPost(savedPost);
+  } catch (err) {
+    console.error("Post save failed:", err);
+
+    // fallback local render
+    renderPost({
+      title,
+      content,
+      date: new Date().toDateString()
+    });
+  }
 
   document.getElementById("postTitle").value = "";
   document.getElementById("postContent").value = "";
   postBox.style.display = "none";
 }
 
+/* ---------------- RENDER POST ---------------- */
 function renderPost(post) {
   const div = document.createElement("div");
   div.className = "forum-post";
 
   div.innerHTML = `
     <h4>${post.title}</h4>
-    <small>${post.date}</small>
+    <small>${post.date || new Date().toDateString()}</small>
     <p>${post.content}</p>
   `;
 
   postList.prepend(div);
 }
+
+/* ---------------- INIT ---------------- */
+loadPosts();
