@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Diary</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assests/logo.jpg" />
+      <h2>ManoMitra</h2>
+      <p>Your mental wellness companion</p>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ai-friend.html">AI Friend</a>
+      <a class="active" href="diary.html">My Diary</a>
+      <a href="forum.html">Peer Forum</a>
+      <a href="relaxation.html">Relaxation</a>
+      <a href="selfhelp.html">Self-Help</a>
+      <a href="booking.html">Booking</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <h1>My Private Diary</h1>
+      <button class="btn" onclick="openNewEntry()">＋ New Entry</button>
+    </div>
+
+    <p class="subtitle">Your thoughts are safe here </p>
+
+    <!-- DIARY LIST -->
+    <div id="diaryList" class="card-grid"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state" style="display:none;">
+      <p>No entries yet 🌱</p>
+      <small>Start writing your thoughts.</small>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal()">×</span>
+
+    <h3 id="modalTitle">New Entry</h3>
+
+    <textarea id="entryText"
+      class="textarea"
+      placeholder="Write freely..."></textarea>
+
+    <br>
+    <button class="btn" onclick="saveEntry()">Save</button>
+
+  </div>
+</div>
+
+<script src="js/diary.js"></script>
+</body>
+</html>
