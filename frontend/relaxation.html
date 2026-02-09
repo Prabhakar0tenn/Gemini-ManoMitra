@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Relaxation Library</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/relax.css">
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assests/logo.jpg" />
+      <h2>ManoMitra</h2>
+      <p>Your mental wellness companion</p>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ai-friend.html">AI Friend</a>
+      <a href="diary.html">My Diary</a>
+      <a href="forum.html">Peer Forum</a>
+      <a class="active" href="relaxation.html">Relaxation</a>
+      <a href="selfhelp.html">Self-Help</a>
+      <a href="booking.html">Booking</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Relaxation Library</h1>
+    <p class="subtitle">Calming audio & focus tools </p>
+
+    <div class="tabs">
+      <button onclick="filter('all')" class="active">All</button>
+      <button onclick="filter('sleep')">Sleep</button>
+      <button onclick="filter('focus')">Focus</button>
+      <button onclick="filter('anxiety')">Anxiety</button>
+      <button onclick="filter('meditation')">Meditation</button>
+    </div>
+
+    <div class="relax-grid" id="relaxGrid"></div>
+
+    <hr>
+
+    <!-- <h3>Create Your Playlist 🎶</h3>
+    <input id="plistName" placeholder="Playlist name" />
+    <input id="plistUrl" placeholder="YouTube link" />
+    <button class="btn" onclick="savePlaylist()">Save Playlist</button>
+  </main>
+</div> -->
+
+<script src="js/relax.js"></script>
+</body>
+</html>

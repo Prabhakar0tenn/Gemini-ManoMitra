@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book a Session</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assests/logo.jpg" />
+      <h2>ManoMitra</h2>
+      <p>Your mental wellness companion</p>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ai-friend.html">AI Friend</a>
+      <a href="diary.html">My Diary</a>
+      <a href="forum.html">Peer Forum</a>
+      <a href="relaxation.html">Relaxation</a>
+      <a href="selfhelp.html">Self-Help</a>
+      <a class="active" href="booking.html">Booking</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <h1>Book a Confidential Session</h1>
+    <p class="subtitle">Connect with a professional campus counsellor.</p>
+
+    <!-- ALERT -->
+    <div class="alert">
+      <strong>In Crisis?</strong><br>
+      If you are in immediate distress, please call <b>988</b>.
+      This booking system is not for emergencies.
+    </div>
+
+    <!-- STEP 1 -->
+    <h3>1. Select a Counsellor</h3>
+
+    <!-- hidden input -->
+    <input type="hidden" id="selectedCounsellor">
+
+    <div class="card-grid">
+      <div class="card selectable" data-name="Dr. Anjali Sharma" onclick="selectCounsellor(this)">
+        <b>Dr. Anjali Sharma</b><br>
+        <small>Anxiety & Stress</small>
+      </div>
+
+      <div class="card selectable" data-name="Mr. Rohan Gupta" onclick="selectCounsellor(this)">
+        <b>Mr. Rohan Gupta</b><br>
+        <small>Career & Academic Pressure</small>
+      </div>
+
+      <div class="card selectable" data-name="Ms. Priya Singh" onclick="selectCounsellor(this)">
+        <b>Ms. Priya Singh</b><br>
+        <small>Relationships & Social Issues</small>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <h3 style="margin-top:30px;">2. Your Details</h3>
+
+    <input id="name" class="textarea" placeholder="Your Name" />
+    <br><br>
+    <input id="email" class="textarea" placeholder="Your Email" />
+
+    <!-- STEP 3 -->
+    <h3 style="margin-top:30px;">3. Add Notes (Optional)</h3>
+    <textarea id="notes" class="textarea"
+      placeholder="Briefly mention what you'd like to talk about..."></textarea>
+
+    <!-- BUTTON -->
+    <br><br>
+    <button id="bookBtn" class="btn" disabled onclick="sendEmail()">
+      Request Session
+    </button>
+
+  </main>
+</div>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("CNW4AvvYswnqAwq16");
+  })();
+</script>
+
+<script src="js/booking.js"></script>
+</body>
+</html>
